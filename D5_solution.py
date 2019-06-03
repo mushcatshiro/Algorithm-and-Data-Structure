@@ -8,6 +8,8 @@ def cons(a, b):
 Implement car and cdr.
 """
 
+# first approach
+
 def cons(a, b):
 	# def pair(f):
 	# 	return (a, b)
@@ -26,3 +28,5 @@ def cdr(pair):
 car(cons((3,4),4))
 
 # T O(1)
+
+# second approach, to not ignore the fact that return pair is returned as a function call not a value
