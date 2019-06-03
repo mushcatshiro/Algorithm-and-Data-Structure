@@ -7,3 +7,22 @@ def cons(a, b):
     return pair
 Implement car and cdr.
 """
+
+def cons(a, b):
+	# def pair(f):
+	# 	return (a, b)
+	# return pair
+	return (a,b)
+
+def car(pair):
+	car, cdr = pair
+	print(car)
+	return car
+
+def cdr(pair):
+	car, cdr = pair
+	return cdr
+
+car(cons((3,4),4))
+
+# T O(1)
