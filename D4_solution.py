@@ -14,18 +14,16 @@ class solution_1:
 		self.lst = lst
 	def missing_smallint (self):
 		self.lst.sort()
-		try:
-			for index, i in enumerate(self.lst):
-				# print(i)
-				if index == 0:
-					diff = abs(index - i)
-					continue
-				if abs(index - i) == diff:
-					continue
-				else:
-					print(i+1)
-		except:
-			print((self.lst[len(lst)+1])+1)
+		for index, i in enumerate(self.lst):
+			# print(i)
+			if index == 0:
+				diff = abs(index - i)
+				continue
+			if abs(index - i) == diff:
+				continue
+			else:
+				print(i+1)
+		print((self.lst[len(lst)-1])+1)
 
 # T O(n)
 

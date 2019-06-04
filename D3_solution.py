@@ -16,3 +16,6 @@ class Node:
         self.val = val
         self.left = left
         self.right = right
+
+node = Node("left", "right")
+print(node.left)

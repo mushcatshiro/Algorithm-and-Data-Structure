@@ -18,3 +18,10 @@ class mapping:
 
 enc = mapping(dic)
 print(enc.map_())
+
+# get mapping
+
+# first approach
+
+# how long? how general?
+# any neighbour sum <27 & >9
