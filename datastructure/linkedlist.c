@@ -130,7 +130,9 @@ int main()
 /*
 When should you use the heap, and when should you use the stack? 
 If you need to allocate a large block of memory (e.g. a large array, or a big struct), and you need to keep that variable around a long time (like a global), then you should allocate it on the heap. 
+declare it global? dynamically.
 If you are dealing with relatively small variables that only need to persist as long as the function using them is alive, then you should use the stack, it's easier and faster. 
+however if you try to allocate too many temporary variables, you will get a “Stack overflow” error
 If you need variables like arrays and structs that can change size dynamically (e.g. arrays that can grow or shrink as needed) then you will likely need to allocate them on the heap, 
 and use dynamic memory allocation functions like malloc(), calloc(), realloc() and free() to manage that memory "by hand". 
 */
