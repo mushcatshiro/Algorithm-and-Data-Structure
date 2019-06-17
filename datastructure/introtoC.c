@@ -114,6 +114,7 @@ int init_array()
 	char name[4] = {'s','a','m','\0'};
 	// whats the differnce in '' and ""?
 	// char name[] = "Sam";
+	// "" includes \0?
 }
 
 void side_effects()
