@@ -1,6 +1,8 @@
 # include <stdio.h>
 # include <string.h>
 # define count 0
+# define name substitude_text
+# define for_all for(i=0; i<20;i++) // not a good practise
 
 /*
 const float varName = value;

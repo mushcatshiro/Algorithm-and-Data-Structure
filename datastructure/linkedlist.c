@@ -46,7 +46,7 @@ struct ListNode *findNode(struct ListNode *head, int i)
 	// return current pointer
 }
 
-void insertNode(struct ListNode **ptrHead, int index, int value)
+void insertNode(struct ListNode **ptrHead, int index, int value) // to end, to any random location?
 {
 	struct ListNode *cur, *newNode;
 	// If empty list or inserting first node, need to update head pointer
@@ -126,6 +126,8 @@ int main()
 	// printf("add node?\n");
 	// scanf("%d", )
 }
+
+// try match node; remove node
 
 /*
 When should you use the heap, and when should you use the stack? 
