@@ -1,3 +1,5 @@
+// ntucs CE1007
+
 # include <stdio.h>
 # include <stdlib.h>
 
