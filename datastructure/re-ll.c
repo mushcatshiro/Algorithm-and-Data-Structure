@@ -142,7 +142,7 @@ struct Node *delete_node(struct Node *ptr, int nthnode, int length)
 int main()
 {
 	struct Node *nNode, *head = NULL;
-	struct Node *cur;
+	//struct Node *cur;
 	int value, length;
 	int user_input, nthnode, insert_value, nlength;
 	nNode = malloc(sizeof(struct Node));
@@ -182,7 +182,7 @@ int main()
 				printf("to delete nth location? \n");
 				scanf("%d", &nthnode);
 				nlength = traversal(head);
-				head = delete_node(head, nthnode, length);
+				head = delete_node(head, nthnode, nlength);
 				break;
 			case 3:
 				traversal(head);

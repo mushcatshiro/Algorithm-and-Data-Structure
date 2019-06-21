@@ -2,7 +2,7 @@
 # define dev(num) (!(num % 10)) // macro
 
 const int count = 0;
-
+/*
 struct bin
 {
 	int index;
@@ -31,3 +31,13 @@ int main()
 
 // -1 and 0 
 // 1 and 0
+*/
+
+int main()
+{
+	int i, j;
+	i, j = 1, 2;
+	printf("%d & %d\n", i, j);
+	return 0;
+
+}
