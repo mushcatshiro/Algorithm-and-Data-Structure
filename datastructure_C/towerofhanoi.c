@@ -1,6 +1,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+// to revisit this problem
+
 struct Node
 {
 	int value;
@@ -17,7 +19,7 @@ void traversal(struct Node *top)
 	}
 	printf("end.\n");
 }
-
+/*
 struct Node *add_node(struct Node *top)
 {
 	struct Node *nNode;
@@ -39,7 +41,7 @@ struct Node *delete_node(struct Node *top)
 	top = ntop;
 	return top;
 }
-
+*/
 struct Node *create_tower(int disk)
 {
 	struct Node *nNode;
@@ -47,11 +49,13 @@ struct Node *create_tower(int disk)
 	top = nNode;
 	while (disk > 1)
 	{
+		nNode->value = disk;
 		top = malloc(sizeof(struct Node));
 		top->nextNode = nNode;
 		nNode = top;
 		--disk;
 	}
+	nNode->value = disk;
 	return top;
 }
 
@@ -60,6 +64,6 @@ int main()
 	struct Node *A, *B, *C;
 	int disk =5;
 	A = create_tower(disk);
-
+	traversal(A);
 	return 0;
 }
