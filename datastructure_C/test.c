@@ -35,9 +35,26 @@ int main()
 
 int main()
 {
-	int i, j;
-	i, j = 1, 2;
-	printf("%d & %d\n", i, j);
-	return 0;
+	// int i, j;
+	// i, j = 1, 2;
+	// printf("%d & %d\n", i, j);
+	// return 0;
+	// int arr[5];
+	// for (int i=0; i<5; i++)
+	// {
+	// 	arr[i]=(i+1);
+	// }
+	// for (int i=0; i<5; i++)
+	// {
+	// 	printf("%d ", arr[i]);
+	// }
+	if (!5)
+	{
+		printf("hi\n");
+	}
+	else 
+	{
+		printf("bye\n");
+	}
 
 }
