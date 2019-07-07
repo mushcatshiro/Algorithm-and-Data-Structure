@@ -5,3 +5,7 @@ grid printing eg.
 |     |     |
 |     |     |
 +=====+=====+
+
+isBST?
+BST variations
+efficient isPrime?

@@ -75,13 +75,18 @@ struct Node *search_parent(struct Node *ptr, int value)
 
 struct Node *search_min(struct Node *ptr)
 {
+	printf("in search min \n");
 	struct Node *searchmin;
-	searchmin = ptr->leftNode;
-	if (searchmin->leftNode != NULL)
+	searchmin = ptr->rightNode;
+	if (searchmin->leftNode == NULL)
 	{
-		search_min(searchmin->leftNode);
+			return searchmin;
 	}
-	return searchmin;
+	else
+	{
+		searchmin = search_min(searchmin->leftNode);
+	}
+
 }
 
 struct Node *insert_value(struct Node *node, int value)
@@ -113,6 +118,8 @@ void delete_node(struct Node *r_ptr, int value)
 	int count = 0, min_val;
 	d_node = search_tree(r_ptr, value, count);
 	parent = search_parent(r_ptr, value);
+	// ommit base condition of delete root
+	// 1st condition is to delete leaf
 	if (d_node->leftNode == NULL && d_node->rightNode == NULL)
 	{
 		if ((parent->leftNode != NULL) && (parent->leftNode->value) == value)
@@ -128,26 +135,42 @@ void delete_node(struct Node *r_ptr, int value)
 			free(d_node);
 		}
 	}
-	else if (d_node->leftNode == NULL && d_node->rightNode != NULL)
+	// 2nd condition is to remove node with ONE child (regardless of grandchild number)
+	else if ((d_node->leftNode == NULL && d_node->rightNode != NULL) || (d_node->leftNode != NULL && d_node->rightNode == NULL))
 	{
-		if (((parent->leftNode != NULL) && (parent->leftNode->value) == value) || (d_node->leftNode != NULL && d_node->rightNode == NULL))
+		if ((parent->leftNode != NULL) && (parent->leftNode->value) == value)
 		{
-			printf("L!\n");
-			parent->leftNode = d_node->rightNode;
-			free(d_node);
+			if (d_node->leftNode != NULL)
+			{
+				parent->leftNode = d_node->leftNode;
+				free(d_node);
+			}
+			else if (d_node->rightNode !=NULL)
+			{
+				parent->leftNode = d_node->rightNode;
+				free(d_node);
+			}
 		}
 		else if ((parent->rightNode != NULL) && (parent->rightNode->value) == value)
 		{
-			printf("R!\n");
-			parent->rightNode = d_node->rightNode;
-			free(d_node);
+			if (d_node->leftNode != NULL)
+			{
+				parent->rightNode = d_node->leftNode;
+				free(d_node);
+			}
+			else if (d_node->rightNode !=NULL)
+			{
+				parent->rightNode = d_node->rightNode;
+				free(d_node);
+			}
 		}
 	}
 	else
 	{
 		min_node = search_min(d_node);
 		min_val = min_node->value;
-		delete_node(min_node, min_val);
+		printf("min val %d\n", min_val);
+		delete_node(r_ptr, min_val);
 		d_node->value = min_val;
 	}
 }
@@ -179,8 +202,20 @@ int main()
 	// printf("%d\n", test->value);
 	// delete_node(root, 2);
 	// delete_node(root, 6);
-	delete_node(root, 12);
+	delete_node(root, 7);
 	traversetree(root);
+	printf("\n");
+	// delete_node(root, 8);
+	// traversetree(root);
+	// printf("\n");
+	// delete_node(root, 9);
+	// traversetree(root);
+	// printf("\n");
+	// delete_node(root, 12);
+	// traversetree(root);
+	// printf("\n");
+	// delete_node(root, 17);
+	// traversetree(root);
 	printf("\n");
 	return 0;
 }
