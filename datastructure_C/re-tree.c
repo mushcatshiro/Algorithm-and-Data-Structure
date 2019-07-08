@@ -23,34 +23,32 @@ void traversetree(struct Node *ptr )
 	}
 }
 
-struct Node *search_tree(struct Node *ptr, int value, int count)
+struct Node *bsearch_tree(struct Node *ptr, int value, int count)
 {
-	int skip = 0;
 	if (ptr->value == value)
 	{
-		printf("found after binary search %d time(s)\n", count);
-		skip = 1;
-		return ptr;
+		printf("found %d after binary search %d time(s)\n", value, count);
 	}
-	if (ptr->value < value)
+	if ((ptr->leftNode == NULL) && (ptr->rightNode == NULL))
+	{
+		printf("value not in tree\n");
+	}
+	else if (ptr->value < value)
 	{
 		printf("moving to right\n");
 		count = count + 1;
-		printf("R count %d\n", count);
-		search_tree(ptr->rightNode, value, count);
+		bsearch_tree(ptr->rightNode, value, count);
 	}
-	else if (ptr->value > value & skip != 1)
+	else if (ptr->value > value)
 	{
 		printf("moving to left\n");
 		count = count + 1;
-		printf("L count %d\n", count);
-		search_tree(ptr->leftNode, value, count);
+		bsearch_tree(ptr->leftNode, value, count);
 	}
 }
-
+/* became obsolete after modifying delete_node
 struct Node *search_parent(struct Node *ptr, int value)
 {
-	// printf("L%d R%d\n", ptr->leftNode->value, ptr->rightNode->value);
 	// good example of recursion, why its so important to have four return statement?
 	if ((ptr->leftNode) == NULL && (ptr->rightNode) == NULL)
 	{
@@ -70,12 +68,10 @@ struct Node *search_parent(struct Node *ptr, int value)
 	{
 		return search_parent(ptr->rightNode, value);
 	}
-
 }
-
+*/
 struct Node *search_min(struct Node *ptr)
 {
-	printf("in search min \n");
 	struct Node *searchmin;
 	searchmin = ptr->rightNode;
 	if (searchmin->leftNode == NULL)
@@ -111,12 +107,12 @@ struct Node *insert_value(struct Node *node, int value)
 	}
 	return node;
 }
-
-void delete_node(struct Node *r_ptr, int value)
+/*
+void delete_node_old(struct Node *r_ptr, int value)
 {
 	struct Node *d_node, *parent, *min_node;
 	int count = 0, min_val;
-	d_node = search_tree(r_ptr, value, count);
+	d_node = bsearch_tree(r_ptr, value, count);
 	parent = search_parent(r_ptr, value);
 	// ommit base condition of delete root
 	// 1st condition is to delete leaf
@@ -174,6 +170,48 @@ void delete_node(struct Node *r_ptr, int value)
 		d_node->value = min_val;
 	}
 }
+*/
+
+struct Node *delete_node(struct Node *r_ptr, int value)
+{
+	if (r_ptr == NULL)
+	{
+		printf("node %d not found\n", value);
+		return NULL;
+	}
+	if (r_ptr->value > value)
+	{
+		r_ptr->leftNode = delete_node(r_ptr->leftNode, value);
+	}
+	else if (r_ptr->value < value)
+	{
+		r_ptr->rightNode = delete_node(r_ptr->rightNode, value);
+	}
+	else if (r_ptr->value == value)
+	{
+		//real shit incoming
+		struct Node *temp;
+		if (r_ptr->leftNode == NULL)
+		{
+			temp = r_ptr->rightNode;
+			free(r_ptr);
+			return temp;
+		}
+		else if (r_ptr->rightNode == NULL)
+		{
+			temp = r_ptr->leftNode;
+			free(r_ptr);
+			return temp;
+		}
+		else if ((r_ptr->leftNode != NULL) && (r_ptr->rightNode != NULL))
+		{
+			temp = search_min(r_ptr);
+			r_ptr->value = temp->value;
+			r_ptr->rightNode = delete_node(temp, temp->value);
+		}
+		return r_ptr;
+	}
+}
 
 int main()
 {
@@ -197,14 +235,14 @@ int main()
 	//printf("traversing BST\n");
 	// traversetree(root);
 	// printf("\n");
-	//search_tree(root, length, count);
+	// bsearch_tree(root, 18, count);
 	// test = search_parent(root, 2);
 	// printf("%d\n", test->value);
 	// delete_node(root, 2);
 	// delete_node(root, 6);
-	delete_node(root, 7);
-	traversetree(root);
-	printf("\n");
+	// delete_node(root, 7);
+	// traversetree(root);
+	// printf("\n");
 	// delete_node(root, 8);
 	// traversetree(root);
 	// printf("\n");
@@ -214,8 +252,8 @@ int main()
 	// delete_node(root, 12);
 	// traversetree(root);
 	// printf("\n");
-	// delete_node(root, 17);
-	// traversetree(root);
+	delete_node(root, 7);
+	traversetree(root);
 	printf("\n");
 	return 0;
 }
