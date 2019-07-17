@@ -1,0 +1,5 @@
+shortest path problem
+dijkstra
+knapsack
+dynamic programming
+traveling salesman
