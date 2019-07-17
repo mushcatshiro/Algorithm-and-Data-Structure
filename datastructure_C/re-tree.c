@@ -252,8 +252,9 @@ int main()
 	// delete_node(root, 12);
 	// traversetree(root);
 	// printf("\n");
-	delete_node(root, 7);
-	traversetree(root);
+	// delete_node(root, 7);
+	// traversetree(root);
+	bsearch_tree(root, 10, 0);
 	printf("\n");
 	return 0;
 }
