@@ -4,8 +4,8 @@ For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should g
 You can modify the input array in-place
 """
 
-# lst = [3, 4, -1, 1]
-lst = [1, 2, 0, 3]
+lst = [3, 4, -1, 1]
+# lst = [1, 2, 0, 3]
 
 # first approach
 
@@ -15,15 +15,15 @@ class solution_1:
 	def missing_smallint (self):
 		self.lst.sort()
 		for index, i in enumerate(self.lst):
-			# print(i)
+			print('index:', index, 'i:', i)
 			if index == 0:
 				diff = abs(index - i)
 				continue
 			if abs(index - i) == diff:
 				continue
 			else:
-				print(i+1)
-		print((self.lst[len(lst)-1])+1)
+				print('smallest missing integer', i+1)
+		print(('no missing integer in the list thus missing item is:', (self.lst[len(lst)-1])+1))
 
 # T O(n)
 

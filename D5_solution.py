@@ -23,9 +23,10 @@ def car(pair):
 
 def cdr(pair):
 	car, cdr = pair
+	print(cdr)
 	return cdr
 
-car(cons((3,4),4))
+cdr(car(cons((3,4),4)))
 
 # T O(1)
 

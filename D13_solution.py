@@ -12,4 +12,15 @@ for i in range(len(s)):
 	if s[i] not in l:
 		l.append(s[i])
 
+def kUnique(s, k):
+	longest_unique = 0
+	s_length = len(s)
+
+	start_ptr = 0
+	end_ptr = 0
+
+	for i in range(s_length):
+		end_ptr += 1
+		
+
 
