@@ -21,3 +21,32 @@ Note:
 The name of a file contains at least a period and an extension.
 The name of a directory or sub-directory will not contain a period
 """
+
+st = "dir/subdir2/subsubdir2/file2.ext"
+
+# print(len(r'{}'.format(st)))
+
+st1 = 'dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext'
+
+st1 = st1.split('\n')
+
+print(str(st1))
+
+class node:
+	"""docstring for node"""
+	def __init__(self, parent, child, value, level):
+		self.parent = parent
+		self.child = child
+		self.value = value
+		self.level = level
+
+class tree:
+
+	def __init__(self, root):
+		self.root = root
+
+	def add_node():
+		pass
+
+	def traverse(root):
+		pass
