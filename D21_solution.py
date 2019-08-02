@@ -40,6 +40,7 @@ def try_2(timetable):
 		if start[i] < end[j]:
 			room_occupied += 1
 			max_room = max(max_room, room_occupied)
+			# similar solution to longest substring, D13
 			i += 1
 		else:
 			room_occupied -=1
