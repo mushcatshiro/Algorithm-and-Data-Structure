@@ -1,4 +1,4 @@
-class node(object):
+class node:
 	"""docstring for node"""
 	def __init__(self, value):
 		# super(node, self).__init__()
@@ -6,47 +6,58 @@ class node(object):
 		self.leftNode = None
 		self.righNode = None
 
-def insertNode(root, node):
-	if (root == None):
-		root = node
-	else:
-		if (root.value > node.value):
-			if (root.leftNode == None):
-				root.leftNode = node
-			else:
-				insertNode(root.leftNode, node)
-		elif (root.value < node.value):
-			if (root.righNode == None):
-				root.righNode = node
-			else:
-				insertNode(root.righNode, node)
+class tree:
 
-def traversal(root):
-	if root:
-		traversal(root.leftNode)
-		print(root.value)
-		traversal(root.righNode)
+	def __init__(self, root = None):
+		self.root = root
 
-def bin_search(root, value, counter):
-	if (root == None):
-		print('tree is empty')
-	elif (root.value == value):
-		print('search is completed after {} search(es)'.format(counter))
-	elif (root.value > value):
-		print("moving left")
-		counter += 1
-		bin_search(root.leftNode, value, counter)
-	elif (root.value < value):
-		print("moving right")
-		counter += 1
-		bin_search(root.righNode, value, counter)
+	def insertNode(self, node):
+		self._insertNode(self.root, node)
 
-arr = [18,19,12,7,17,6,8,10,5,3,9,16,2,0,1,4,13,14,15,11]
-r = node(arr[0])
 
-for i in range(1, len(arr)):
-	insertNode(r, node(arr[i]))
+	def _insertNode(self, root, node):
+		if (root == None):
+			self.root = node
+			return (self.root)
+		else:
+			if (root.value > node.value):
+				if (root.leftNode == None):
+					root.leftNode = node
+				else:
+					self._insertNode(root.leftNode, node)
+			elif (root.value < node.value):
+				if (root.righNode == None):
+					root.righNode = node
+				else:
+					self._insertNode(root.righNode, node)
 
-# traversal(r)
-bin_search(r, 10, 0)
-# python counts the nodes, C counts the links
+	def traversal(self, node):
+		if node:
+			self.traversal(node.leftNode)
+			print(node.value)
+			self.traversal(node.righNode)
+
+	def bin_search(self, value, counter):
+		if (self.root == None):
+			print('tree is empty')
+		elif (self.root.value == value):
+			print('search is completed after {} search(es)'.format(counter))
+		elif (self.root.value > value):
+			print("moving left")
+			counter += 1
+			self.bin_search(self.root.leftNode, value, counter)
+		elif (self.root.value < value):
+			print("moving right")
+			counter += 1
+			self.bin_search(self.root.righNode, value, counter)
+
+if __name__ == '__main__':
+	arr = [18,19,12,7,17,6,8,10,5,3,9,16,2,0,1,4,13,14,15,11]
+	r = node(arr[0])
+	tree1 = tree(r)
+
+	for i in range(1, len(arr)):
+		tree1.insertNode(node(arr[i]))
+
+	tree1.traversal(r)
+	# tree1.bin_search(10, 0)
