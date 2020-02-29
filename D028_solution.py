@@ -8,3 +8,19 @@ For example, given the list of words ["the", "quick", "brown", "fox", "jumps", "
 "fox  jumps  over", # 2 extra spaces distributed evenly
 "the   lazy   dog"] # 4 extra spaces distributed evenly
 """
+
+l = ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"]
+
+# 
+
+print(len(l[0]))
+
+import itertools as it
+
+all_combinations = [x for x in it.permutations(l) if len("".join(it.chain(x)))<=16]
+
+print(all_combinations)
+
+# for i in range(2):
+# 	for j in all_combinations[i]:
+# 		print(j)
