@@ -17,3 +17,17 @@ for i in range(len(l)):
 print(r)
 
 # problem how to follow the given string order?
+
+# better solution
+# time complexity is O(n!/(n-k)!), given n = k thus O(n!)
+# space complexity is O(n!/(n-k)!), given n = k thus O(n!)
+
+import itertools as it
+
+def attempt_2(l, s):
+	all_combinations = [i for i in it.permutations(l)]
+	for i in all_combinations:
+		if ''.join(i) == s:
+			return i
+
+solution = attempt_2(l, s)
