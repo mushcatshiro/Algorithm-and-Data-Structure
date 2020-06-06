@@ -47,6 +47,7 @@ for i in range(len(nums)):    # 先做一個hash table
 for i in range(len(nums)):
     if target-nums[i] in hash_table:
         if hash_table[target-nums[i]] != i:
+            # to prevent returning itself ie target 10 = 5 + 5
             return [i, hash_table[target-nums[i]]]
 return []
 

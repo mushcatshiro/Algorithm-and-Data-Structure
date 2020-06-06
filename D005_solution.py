@@ -26,8 +26,27 @@ def cdr(pair):
 	print(cdr)
 	return cdr
 
-cdr(car(cons((3,4),4)))
+# cdr(car(cons((3,4),4)))
 
 # T O(1)
 
-# second approach, to not ignore the fact that return pair is returned as a function call not a value
+# to not ignore the fact that cons returned a function not a value
+# car(cons(3, 4)) returns 3
+def cons_(a, b):
+    def pair(f):
+        return f(a, b)
+    return pair
+
+def car_(f):
+    def left(a, b):
+        return a
+    return f(left)
+
+def cdr_(f):
+    def right(a, b):
+        return b
+    return f(right)
+
+print(car_(cons_(3, 4)))
+
+# pair(left) => left(a, b) => a
