@@ -11,37 +11,47 @@ from itertools import permutations
 
 dic = {}
 ndic = {}
-msg = '111'
+msg = '234'
 
 class mapping:
-	def __init__(self, dic):
-		self.dic = dic
-	def map_ (self):
-		i = 0
-		while i < 26:
-			self.dic[i+1] = chr(97+i)
-			i+=1
-		return(self.dic)
+    def __init__(self, dic):
+        self.dic = dic
+    def get_map (self):
+        i = 0
+        while i < 26:
+            self.dic[i+1] = chr(97+i)
+            i+=1
+        return self.dic
+
 
 def chkRange(msg):
-	return True if int(msg) < 27 and int(msg) > 0
+    return True #if (int(msg) < 27 and int(msg) > 0)
 
+# use recursion
 def solution(msg):
-	if len(msg) == 1 and chkRange(msg):
-		return 1
-	elif len(msg) == 2 and chkRange(msg):
-		return 2
+    decoded_msg = []
+    tmp1 = []
+    tmp2 = []
 
-		
+    if len(msg) == 0:
+        return []
 
-# enc = mapping(dic)
-# dec = decode(msg)
-# how to slice
-# print(enc.map_())
+    # empty list + tmp1 = tmp1
+    if len(msg) > 0:
+        tmp1.append(chr(96+int(msg[0])))
+        tmp1 += solution(msg[1:])
+        if tmp1:
+            decoded_msg.append(tmp1)
+    if len(msg) > 1 and int(msg[:2]) < 27:
+        tmp2.append(chr(96+int(msg[:2])))
+        tmp2 += solution(msg[2:])
+        if tmp2:
+            decoded_msg.append(tmp2)
 
-# get mapping
+    # decoded_msg += tmp1
+    # decoded_msg += tmp2
 
-# first approach
+    return decoded_msg
+    
 
-# how long? how general?
-# any neighbour sum <27 & >9
+print(solution(msg))
