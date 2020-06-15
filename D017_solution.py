@@ -30,23 +30,54 @@ st1 = 'dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\
 
 st1 = st1.split('\n')
 
-print(str(st1))
+def checkTab(s):
+    for i in s:
+        c = i.count("\t")
+        print(f'{i} has {c} count of tab(s)')
+
 
 class node:
 	"""docstring for node"""
-	def __init__(self, parent, child, value, level):
-		self.parent = parent
-		self.child = child
+	def __init__(self, value, child):
 		self.value = value
-		self.level = level
+		self.child = child
 
 class tree:
 
-	def __init__(self, root):
-		self.root = root
+	def __init__(self, st):
+		self.path = self.pathCreate(st)
 
-	def add_node():
-		pass
+	def pathParser(self, st):
+		# assume there exist at least 1 root folder
+
+
 
 	def traverse(root):
 		pass
+
+s = 'aab'
+
+# i dont think tree is the best structure for this question
+# when we crete subdirs and folders, its troublesome to traverse back to
+# the subdir root/parent
+# i see solution with graph
+
+# i see solution checkking for 
+# 1. is file?
+# 2. cummulative folder length
+
+def checkLength(parsedInput):
+
+    fullPathLen = 0
+
+    for i in parsedInput:
+        if i.split('.') > 1:
+            # check length
+        if i.count('\t') == 0:
+            currentMaxLen = len(i)
+            continue
+        else:
+
+
+def parseString(inputString):
+    return inputString.split('\n')

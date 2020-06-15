@@ -45,29 +45,32 @@ def kUnique_1(s, k):
 		end_ptr += 1
 	return (solution)
 
-def kUnique_2 (s, k):
+def kUnique_2(s, k):
 	# 2nd approach better efficiency and more elegant
 	assert (len(s) >= k)
 
 	start_ptr, end_ptr, maxlen = 0, k, k
+	print(len(s))
 
 	while (end_ptr < len(s)):
 		end_ptr += 1
+		print(f'end_ptr: {end_ptr}')
 
 		while True:
-			print(s[start_ptr:end_ptr])
+			# print(s[start_ptr:end_ptr])
 			distinct_char = len(set(s[start_ptr:end_ptr]))
 
 			if (distinct_char <= k):
 				break
 			start_ptr += 1
+			print(f'start_ptr: {start_ptr}')
 		maxlen = max(maxlen, (end_ptr - start_ptr))
 		if ((end_ptr - start_ptr) == maxlen):
 			n_s = s[start_ptr:end_ptr]
 			# cur_longest_start, cur_longest_end = start_ptr, end_ptr
-		print('maxlen', maxlen)
+		# print('maxlen', maxlen)
 	return (n_s)
 
-print(kUnique_1(s, k))
+print(kUnique_2(s, k))
 
 # 2nd sol t O(n) worst case should be 2n, s O(n) (depends on the length increase)

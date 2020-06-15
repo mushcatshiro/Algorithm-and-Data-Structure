@@ -50,3 +50,20 @@ print(no_of_ways(5, [1,2]))
 
 # time complexity should be O(2^n) similar to all_ways
 # space complexity should be O(1)
+
+def third_attempt(total_steps):
+
+	if total_steps <= 1:
+		return 1
+
+	count = 0
+
+	if total_steps - 1 >= 1:
+		count += third_attempt(total_steps - 1)
+
+	if total_steps - 2 >= 1:
+		count += third_attempt(total_steps - 1)
+
+	return count
+
+print(third_attempt(5))

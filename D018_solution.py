@@ -31,15 +31,27 @@ matters as given only length of 4 is returned but 5C3 gives 10
 
 comb = list(combinations(n_a, k))
 
-for i in range(len(comb)):
-	print(comb[i][-1])
+# for i in range(len(comb)):
+# 	print(comb[i][-1])
 
 # or
 
-print(n_a)
+# print(n_a)
 
-for i in range((k-1), len(n_a)):
-	print(n_a[k-1])
-	k +=1
+# for i in range((k-1), len(n_a)):
+	# print(n_a[k-1])
+	# k +=1
 
 # both approach takes linear time to process
+
+# all solution above is doesnt meet the requirements
+# the following solution solves at T O(n-k) and S O(k)
+def solution(arr, k):
+	sol = []
+	for i in range(len(arr)):
+		if i+k > len(arr):
+			break
+		sol.append(max(arr[i:i+k]))
+	print(sol)
+
+solution(a, k)
