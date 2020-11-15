@@ -27,8 +27,5 @@ SYSPATH_DIR = "\\abs\\path\\to\\utilities"
 and for every question that needs to import from utilities add the following code before importing
 
 ```python
-import sys
-from config import SYSPATH_DIR
-sys.path.append(SYSPATH_DIR)
-from utilities.data_structures import *
+import add_path
 ```

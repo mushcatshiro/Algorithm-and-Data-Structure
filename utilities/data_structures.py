@@ -48,7 +48,38 @@ class tree_node(node):
 
 
 class tree:
-    def __init__(self, arg):
-        self.arg = arg
+    """
+    constrains #1 : no duplicated numbers
+    """
+    def __init__(self, root=None):
+        self.root = root
+
+    def insert_tree_node(self, value):
+        self._insert_tree_node(self.root, value)
+
+    def _insert_tree_node(self, root, value):
+        if root is None:
+            self.root = tree_node(value=value)
+        else:
+            if (root.value < value):
+                if root.right is None:
+                    root.right = tree_node(value=value)
+                else:
+                    self._insert_tree_node(root.right, value)
+            elif (root.value > value):
+                if root.left is None:
+                    root.left = tree_node(value=value)
+                else:
+                    self._insert_tree_node(root.left, value)
+            else:
+                print(f"duplicated value {value} will not be added to tree")
+
+    def traversal(self, node=None):
+        if node:
+
+            self.traversal(node.left)
+            print(node.value)
+            self.traversal(node.right)
+
 
 # bst

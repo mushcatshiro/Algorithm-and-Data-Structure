@@ -3,9 +3,8 @@ Merge two sorted linked lists and return it as a new sorted list.
 The new list is made by splicing together the nodes of the first two lists.
 """
 
-import sys
-from config import SYSPATH_DIR
-sys.path.append(SYSPATH_DIR)
+
+import add_path
 from utilities.data_structures import linked_list, linked_list_node
 
 
