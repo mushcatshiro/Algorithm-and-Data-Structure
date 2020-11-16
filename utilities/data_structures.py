@@ -51,6 +51,7 @@ class tree:
     """
     constrains #1 : no duplicated numbers
     """
+
     def __init__(self, root=None):
         self.root = root
 
