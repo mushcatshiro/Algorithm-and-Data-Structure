@@ -15,6 +15,7 @@ class solution_1:
         temp = '1'
 
         for i in range(self.n - 1):
+            print(f'temp: {temp}')
             newtemp = ''
             j = 0
             while j < len(temp):
@@ -29,3 +30,4 @@ class solution_1:
         return temp
 
 assert solution_1(3).count_and_say() == '21'
+assert solution_1(4).count_and_say() == '1211'
