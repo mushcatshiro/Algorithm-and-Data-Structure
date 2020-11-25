@@ -57,14 +57,14 @@ class solution_2:
         self.input_array = input_array
 
     def largest_sum(self):
-        best_sum = float('-inf')
-        current_sum = 0
+        global_max = float('-inf')
+        local_max = 0
         for x in self.input_array:
-            current_sum = max(0, current_sum + x)
-            best_sum = max(best_sum, current_sum)
-            print(f'best_sum {best_sum}, current_sum {current_sum}')
-        print(best_sum)
-        return best_sum
+            local_max = max(x, local_max + x)
+            global_max = max(global_max, local_max)
+            print(f'global_max {global_max}, local_max {local_max}')
+        print(global_max)
+        return global_max
 
 
 assert solution_2([-2, 1, -3, 4, -1, 2, 1, -5, 4]).largest_sum() == 6
