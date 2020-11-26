@@ -62,7 +62,6 @@ class solution_2:
         for x in self.input_array:
             local_max = max(x, local_max + x)
             global_max = max(global_max, local_max)
-            print(f'global_max {global_max}, local_max {local_max}')
         print(global_max)
         return global_max
 
