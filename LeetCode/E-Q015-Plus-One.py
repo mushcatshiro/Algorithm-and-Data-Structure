@@ -57,6 +57,8 @@ class solution_2:
         return temp
 
 
-assert solution_2([1, 2, 3]).add_one() == [1, 2, 4]
-assert solution_2([9]).add_one() == [1, 0]
-assert solution_2([0, 0]).add_one() == [0, 1]
+assert solution_1([1, 2, 3]).add_one() == [1, 2, 4]
+assert solution_1([1, 9]).add_one() == [2, 0]
+assert solution_1([9, 9]).add_one() == [1, 0, 0]
+assert solution_1([9]).add_one() == [1, 0]
+assert solution_1([0, 0]).add_one() == [0, 1]
