@@ -28,3 +28,4 @@ class solution_1:
 
 
 assert solution_1([1, 2, 4, 4, 4, 5]).remove_duplicates() == 4
+assert solution_1([1]).remove_duplicates() == 1

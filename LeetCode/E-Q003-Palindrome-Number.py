@@ -42,3 +42,4 @@ assert solution_2(123321).is_palindrome() == True
 assert solution_2(123322).is_palindrome() == False
 assert solution_2(1234321).is_palindrome() == True
 assert solution_2(1234322).is_palindrome() == False
+assert solution_2(10).is_palindrome() == False

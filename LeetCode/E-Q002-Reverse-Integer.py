@@ -47,6 +47,22 @@ class solution_2:
             return out
 
 
+def solution_3(x: int) -> int:
+    neg = True if x < 0 else False
+    if neg:
+        x = x * -1
+    y = 0
+
+    while x != 0:
+        y = y * 10 + x % 10
+        x = x // 10
+    if neg:
+        y = y * -1
+    if y >= 2 ** 31 - 1 or y <= 2 ** 31 * - 1:
+        return 0
+    return y
+
+
 assert solution_2(2009854, 2**32).reverse_integer() == 4589002
 assert solution_2(-2009854, 2**32).reverse_integer() == -4589002
 assert solution_2(2009854, 2**8).reverse_integer() == 0
