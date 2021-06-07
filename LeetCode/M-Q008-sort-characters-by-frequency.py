@@ -28,6 +28,8 @@ Note that 'A' and 'a' are treated as two different characters.
 Constraints:
 1 <= s.length <= 5 * 105
 s consists of English letters and digits.
+
+tags: bucket sort
 """
 
 
@@ -47,9 +49,4 @@ def solution(s):
     for i in range(required_buckets, 0, -1):
         if bucket[i]:
             res += ''.join([i * c for c in bucket[i]])
-    print(res)
-    return True
-
-
-assert solution('tree')
-assert solution('aaasss')
+    return res
