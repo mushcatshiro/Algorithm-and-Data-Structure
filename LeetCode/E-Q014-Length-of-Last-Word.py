@@ -42,12 +42,18 @@ class solution_2:
         last_word_length = 0
 
         while string_length >= 0 and self.input_string[string_length] == " ":
+            print('1st')
             string_length -= 1
 
         while string_length >= 0 and self.input_string[string_length] != " ":
             last_word_length += 1
             string_length -= 1
+            print('2nd')
+        print('end')
         return last_word_length
 
 
 assert solution_2("a ").length_of_last_word() == 1
+assert solution_2(" a ").length_of_last_word() == 1
+assert solution_2("a asdf").length_of_last_word() == 4
+assert solution_2("a asdf ").length_of_last_word() == 4
